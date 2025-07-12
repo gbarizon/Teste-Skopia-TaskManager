@@ -1,0 +1,28 @@
+version: '3.4'
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=123Mudar!
+    ports:
+      - "1433:1433"
+    healthcheck:
+      test: [ "CMD-SHELL", "sqlcmd -U sa -P 123Mudar! -Q 'select 1'" ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: .
+      dockerfile: src/TaskManager.Api/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=TaskManagerDb;User Id=sa;Password=123Mudar!;
+    ports:
+      - "5000:80"
+    depends_on:
+      sqlserver:
+        condition: service_healthy
