@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using TaskManager.Application.Projects.Commands;
 using TaskManager.Application.Projects.Dtos;
 
-namespace TaskManager.Api.Controller
+namespace TaskManager.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
