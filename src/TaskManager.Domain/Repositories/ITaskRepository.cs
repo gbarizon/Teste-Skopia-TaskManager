@@ -13,5 +13,6 @@ namespace TaskManager.Domain.Repositories
         Task AddAsync(TaskItem task);
         Task UpdateAsync(TaskItem task);
         Task<int> CountByProjectAsync(Guid projectId);
+        Task<bool> HasPendingTasksAsync(Guid projectId);
     }
 }

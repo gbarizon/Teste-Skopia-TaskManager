@@ -23,5 +23,15 @@ namespace TaskManager.Infrastructure.Repositories
             _context.Projects.Add(project);
             await _context.SaveChangesAsync();
         }
+
+        public async Task DeleteAsync(Guid projectId)
+        {
+            var project = await _context.Projects.FindAsync(projectId);
+            if (project != null)
+            {
+                _context.Projects.Remove(project);
+                await _context.SaveChangesAsync();
+            }
+        }
     }
 }

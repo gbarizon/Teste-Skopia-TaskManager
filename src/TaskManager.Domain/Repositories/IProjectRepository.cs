@@ -9,6 +9,7 @@ namespace TaskManager.Domain.Repositories
 {
     public interface IProjectRepository
     {
-        Task AddAsync(Project project);       
+        Task AddAsync(Project project);
+        Task DeleteAsync(Guid projectId);
     }
 }

@@ -40,5 +40,11 @@ namespace TaskManager.Infrastructure.Repositories
         {
             return await _context.Tasks.CountAsync(t => t.ProjectId == projectId);
         }
+
+        public async Task<bool> HasPendingTasksAsync(Guid projectId)
+        {
+            return await _context.Tasks.AnyAsync(t => t.ProjectId == projectId &&
+                (t.Status == Status.Pendente || t.Status == Status.EmAndamento));
+        }
     }
 }
