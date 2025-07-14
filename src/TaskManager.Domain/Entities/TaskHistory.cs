@@ -21,12 +21,23 @@ namespace TaskManager.Domain.Entities
 
         [Required]
         [MaxLength(500)]
-        public required string Changes { get; set; }
+        public required string ChangesDescriptions { get; set; }
 
         [Required]
         public DateTime ChangedAt { get; set; }
 
         [Required]
         public Guid ChangedByUserId { get; set; }
+
+        public TaskHistory(Guid taskId, string changes, Guid changedByUserId)
+        {
+            Id = Guid.NewGuid();
+            TaskId = taskId;
+            ChangesDescriptions = changes;
+            ChangedByUserId = changedByUserId;
+            ChangedAt = DateTime.UtcNow;
+        }
+
+        public TaskHistory() { }
     }
 }

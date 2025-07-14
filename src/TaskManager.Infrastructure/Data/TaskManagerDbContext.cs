@@ -14,13 +14,13 @@ namespace TaskManager.Infrastructure.Data
         {   
             Projects = Set<Project>();
             Tasks = Set<TaskItem>();
-            Comments = Set<TaskComment>();
-            Histories = Set<TaskHistory>();
+            TaskComments = Set<TaskComment>();
+            TaskHistories = Set<TaskHistory>();
         }
 
         public DbSet<Project> Projects { get; set; }
         public DbSet<TaskItem> Tasks { get; set; }
-        public DbSet<TaskComment> Comments { get; set; }
-        public DbSet<TaskHistory> Histories { get; set; }
+        public DbSet<TaskComment> TaskComments { get; set; }
+        public DbSet<TaskHistory> TaskHistories { get; set; }
     }
 }
