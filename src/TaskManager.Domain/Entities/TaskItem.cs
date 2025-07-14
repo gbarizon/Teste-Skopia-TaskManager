@@ -21,9 +21,16 @@ namespace TaskManager.Domain.Entities
         public List<TaskComment> Comments { get; set; } = new();
         public List<TaskHistory> History { get; set; } = new();
 
-        public TaskItem(/*...*/)
+        public TaskItem(Guid projectId, string title, string description, DateTime dueDate, Priority priority)
         {
-            // Priority só pode ser definida no construtor!
-        }
+            Id = Guid.NewGuid();
+            ProjectId = projectId;
+            Title = title;
+            Description = description;
+            DueDate = dueDate;
+            Priority = priority;
+            Status = Status.Pendente;
+        }       
+        private TaskItem() { }
     }
 }
