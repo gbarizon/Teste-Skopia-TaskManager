@@ -14,6 +14,7 @@ namespace TaskManager.Application.Projects.Validators
         {
             RuleFor(x => x.Name).NotEmpty().WithMessage("O nome do projeto é obrigatório");
             RuleFor(x => x.Description).NotEmpty().WithMessage("A descrição é obrigatória");
+            RuleFor(x => x.OwnerId).NotEmpty().WithMessage("OwnerId é obrigatório.");
         }
     }
 }
