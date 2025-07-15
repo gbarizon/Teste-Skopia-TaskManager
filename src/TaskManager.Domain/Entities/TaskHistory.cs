@@ -21,7 +21,7 @@ namespace TaskManager.Domain.Entities
 
         [Required]
         [MaxLength(500)]
-        public required string ChangesDescriptions { get; set; }
+        public required string Changes { get; set; }
 
         [Required]
         public DateTime ChangedAt { get; set; }
@@ -33,7 +33,7 @@ namespace TaskManager.Domain.Entities
         {
             Id = Guid.NewGuid();
             TaskId = taskId;
-            ChangesDescriptions = changes;
+            Changes = changes;
             ChangedByUserId = changedByUserId;
             ChangedAt = DateTime.UtcNow;
         }

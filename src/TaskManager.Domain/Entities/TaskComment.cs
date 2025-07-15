@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,5 +29,17 @@ namespace TaskManager.Domain.Entities
 
         [Required]
         public DateTime DateCreated { get; set; }
+
+
+        public TaskComment(Guid taskId, string comment, Guid userId)
+        {
+            Id = Guid.NewGuid();
+            TaskId = taskId;
+            Comment = comment;
+            UserId = userId;
+            DateCreated = DateTime.UtcNow;
+        }
+
+        public TaskComment() { }
     }
 }

@@ -31,6 +31,6 @@ namespace TaskManager.Domain.Entities
             Priority = priority;
             Status = Status.Pendente;
         }       
-        private TaskItem() { }
+        public TaskItem() { }
     }
 }

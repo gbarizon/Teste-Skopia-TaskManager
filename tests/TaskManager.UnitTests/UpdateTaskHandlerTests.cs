@@ -107,7 +107,7 @@ public class UpdateTaskHandlerTests
 
         // Assert
         historyMock.Verify(h => h.AddAsync(It.Is<TaskHistory>(
-            hi => hi.TaskId == task.Id && hi.ChangesDescriptions.Contains("Título")
+            hi => hi.TaskId == task.Id && hi.Changes.Contains("Título")
         )), Times.Once);
     }
 }

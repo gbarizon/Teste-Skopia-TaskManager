@@ -60,7 +60,7 @@ namespace TaskManager.Application.Tasks.Handlers
                     Id = Guid.NewGuid(),
                     TaskId = task.Id,
                     Task = task,
-                    ChangesDescriptions = string.Join("; ", changes),
+                    Changes = string.Join("; ", changes),
                     ChangedAt = DateTime.UtcNow,
                     ChangedByUserId = Guid.Empty
                 };
