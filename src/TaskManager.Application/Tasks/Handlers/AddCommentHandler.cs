@@ -22,8 +22,7 @@ namespace TaskManager.Application.Tasks.Handlers
 
             var comment = new TaskComment
             {
-                TaskId = dto.TaskId,
-                Task = new TaskItem { Id = dto.TaskId },
+                TaskId = dto.TaskId,                
                 Comment = dto.Content,
                 UserId = dto.UserId,
                 DateCreated = DateTime.UtcNow
@@ -32,8 +31,7 @@ namespace TaskManager.Application.Tasks.Handlers
             
             var history = new TaskHistory
             {
-                TaskId = dto.TaskId,
-                Task = new TaskItem { Id = dto.TaskId },
+                TaskId = dto.TaskId,              
                 Changes = $"Comentário adicionado: '{dto.Content}'",
                 ChangedByUserId = dto.UserId,
                 ChangedAt = DateTime.UtcNow

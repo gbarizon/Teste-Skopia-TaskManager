@@ -17,7 +17,7 @@ namespace TaskManager.Domain.Entities
         public Guid TaskId { get; set; }
 
         [ForeignKey("TaskId")]
-        public required TaskItem Task { get; set; }
+        public TaskItem Task { get; set; } = null!; 
 
         [Required]
         [MaxLength(500)]

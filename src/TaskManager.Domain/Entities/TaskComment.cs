@@ -18,7 +18,7 @@ namespace TaskManager.Domain.Entities
         public Guid TaskId { get; set; }
 
         [ForeignKey("TaskId")]
-        public required TaskItem Task { get; set; }
+        public TaskItem? Task { get; set; } // Declared as nullable to resolve CS8618
 
         [Required]
         [MaxLength(500)]
@@ -29,7 +29,6 @@ namespace TaskManager.Domain.Entities
 
         [Required]
         public DateTime DateCreated { get; set; }
-
 
         public TaskComment(Guid taskId, string comment, Guid userId)
         {

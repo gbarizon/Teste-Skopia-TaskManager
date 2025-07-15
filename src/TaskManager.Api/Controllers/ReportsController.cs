@@ -13,6 +13,13 @@ public class ReportsController : ControllerBase
         _mediator = mediator;
     }
 
+    /// <summary>
+    /// Retorna o relatório de desempenho dos usuários, indicando a média de tarefas concluídas em determinado período.
+    /// </summary>
+    /// <remarks>
+    /// Este endpoint está disponível apenas para usuários gerentes (autorização não implementada nesta versão).
+    /// </remarks>
+    /// <returns>Lista de usuários com a média de tarefas concluídas.</returns>
     [HttpGet("task-completion")]
     public async Task<IActionResult> GetTaskCompletionReport()
     {

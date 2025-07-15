@@ -1,5 +1,7 @@
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
+using System.Text.Json.Serialization;
 using TaskManager.Application.Projects.Handlers;
 using TaskManager.Application.Projects.Validators;
 using TaskManager.Application.Tasks.Handlers;
@@ -37,6 +39,16 @@ builder.Services.AddValidatorsFromAssemblyContaining<AddCommentDtoValidator>();
 builder.Services.AddValidatorsFromAssemblyContaining<UpdateTaskDtoValidator>();
 builder.Services.AddValidatorsFromAssemblyContaining<CreateProjectDtoValidator>();
 builder.Services.AddValidatorsFromAssemblyContaining<DeleteProjectCommandValidator>();
+
+builder.Services.AddSwaggerGen(options =>
+{
+    var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+});
+
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 
 var app = builder.Build();
 

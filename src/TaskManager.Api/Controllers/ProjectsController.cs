@@ -15,6 +15,11 @@ public class ProjectsController : ControllerBase
         _mediator = mediator;
     }
 
+    /// <summary>
+    /// Cria um novo projeto.
+    /// </summary>
+    /// <param name="dto">Dados para criação do projeto.</param>
+    /// <returns>Id do projeto criado.</returns>
     [HttpPost]
     public async Task<IActionResult> CreateProject([FromBody] CreateProjectDto dto)
     {
@@ -22,6 +27,11 @@ public class ProjectsController : ControllerBase
         return CreatedAtAction(nameof(GetProjectById), new { id }, null);
     }
 
+    /// <summary>
+    /// Busca um projeto pelo Id.
+    /// </summary>
+    /// <param name="id">Id do projeto.</param>
+    /// <returns>Projeto encontrado ou 404.</returns>
     [HttpGet("{id}")]
     public async Task<IActionResult> GetProjectById(Guid id)
     {
@@ -30,6 +40,10 @@ public class ProjectsController : ControllerBase
         return Ok(result);
     }
 
+    /// <summary>
+    /// Retorna todos os projetos cadastrados.
+    /// </summary>
+    /// <returns>Lista de projetos.</returns>
     [HttpGet]
     public async Task<IActionResult> GetAllProjects()
     {
@@ -37,6 +51,10 @@ public class ProjectsController : ControllerBase
         return Ok(result);
     }
 
+    /// <summary>
+    /// Exclui um projeto.
+    /// </summary>
+    /// <param name="id">Id do projeto.</param>
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteProject(Guid id)
     {

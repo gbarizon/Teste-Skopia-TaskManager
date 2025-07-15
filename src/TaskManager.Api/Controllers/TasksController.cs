@@ -15,6 +15,11 @@ public class TasksController : ControllerBase
         _mediator = mediator;
     }
 
+    /// <summary>
+    /// Cria uma nova tarefa em um projeto.
+    /// </summary>
+    /// <param name="dto">Dados da nova tarefa.</param>
+    /// <returns>Id da tarefa criada.</returns>
     [HttpPost]
     public async Task<IActionResult> CreateTask([FromBody] CreateTaskDto dto)
     {
@@ -22,6 +27,10 @@ public class TasksController : ControllerBase
         return CreatedAtAction(nameof(GetTaskById), new { id }, null);
     }
 
+    /// <summary>
+    /// Retorna uma tarefa pelo Id.
+    /// </summary>
+    /// <param name="id">Id da tarefa.</param>
     [HttpGet("{id}")]
     public async Task<IActionResult> GetTaskById(Guid id)
     {
@@ -30,6 +39,10 @@ public class TasksController : ControllerBase
         return Ok(result);
     }
 
+    /// <summary>
+    /// Lista todas as tarefas de um projeto.
+    /// </summary>
+    /// <param name="projectId">Id do projeto.</param>
     [HttpGet("project/{projectId}")]
     public async Task<IActionResult> GetTasksByProjectId(Guid projectId)
     {
@@ -37,6 +50,11 @@ public class TasksController : ControllerBase
         return Ok(result);
     }
 
+    /// <summary>  
+    /// Atualiza uma tarefa existente.  
+    /// </summary>  
+    /// <param name="id">Id da tarefa a ser atualizada.</param>  
+    /// <param name="dto">Dados de atualização da tarefa.</param>  
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateTask(Guid id, [FromBody] UpdateTaskDto dto)
     {
@@ -45,6 +63,10 @@ public class TasksController : ControllerBase
         return NoContent();
     }
 
+    /// <summary>
+    /// Exclui uma tarefa.
+    /// </summary>
+    /// <param name="id">Id da tarefa.</param>
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteTask(Guid id)
     {

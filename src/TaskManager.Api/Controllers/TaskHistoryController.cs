@@ -13,6 +13,10 @@ public class TaskHistoryController : ControllerBase
         _mediator = mediator;
     }
 
+    /// <summary>
+    /// Lista o histórico de alterações de uma tarefa.
+    /// </summary>
+    /// <param name="taskId">Id da tarefa.</param>
     [HttpGet("task/{taskId}")]
     public async Task<IActionResult> GetHistoryByTaskId(Guid taskId)
     {

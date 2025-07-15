@@ -15,6 +15,10 @@ public class TaskCommentsController : ControllerBase
         _mediator = mediator;
     }
 
+    /// <summary>
+    /// Adiciona um comentário a uma tarefa.
+    /// </summary>
+    /// <param name="dto">Dados do comentário.</param>
     [HttpPost]
     public async Task<IActionResult> AddComment([FromBody] AddCommentDto dto)
     {
@@ -22,6 +26,10 @@ public class TaskCommentsController : ControllerBase
         return CreatedAtAction(nameof(GetCommentsByTaskId), new { taskId = dto.TaskId }, null);
     }
 
+    /// <summary>
+    /// Lista todos os comentários de uma tarefa.
+    /// </summary>
+    /// <param name="taskId">Id da tarefa.</param>
     [HttpGet("task/{taskId}")]
     public async Task<IActionResult> GetCommentsByTaskId(Guid taskId)
     {
