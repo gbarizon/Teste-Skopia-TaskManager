@@ -11,5 +11,6 @@ namespace TaskManager.Domain.Repositories
     {
         Task AddAsync(TaskHistory history);
         Task<List<TaskHistory>> GetByTaskIdAsync(Guid taskId);
+        Task<List<(Guid UserId, double AverageTasksCompleted)>> GetTaskCompletionReportAsync(DateTime startDate, DateTime endDate);
     }
 }

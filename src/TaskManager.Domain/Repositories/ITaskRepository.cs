@@ -14,5 +14,7 @@ namespace TaskManager.Domain.Repositories
         Task UpdateAsync(TaskItem task);
         Task<int> CountByProjectAsync(Guid projectId);
         Task<bool> HasPendingTasksAsync(Guid projectId);
+        Task<List<TaskItem>> GetByProjectIdAsync(Guid projectId);
+        Task DeleteAsync(Guid taskId);
     }
 }

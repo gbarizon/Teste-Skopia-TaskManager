@@ -2,34 +2,45 @@
 using Microsoft.AspNetCore.Mvc;
 using TaskManager.Application.Projects.Commands;
 using TaskManager.Application.Projects.Dtos;
+using TaskManager.Application.Projects.Queries;
 
-namespace TaskManager.Api.Controllers
+[ApiController]
+[Route("api/[controller]")]
+public class ProjectsController : ControllerBase
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class ProjectsController : ControllerBase
+    private readonly IMediator _mediator;
+
+    public ProjectsController(IMediator mediator)
     {
-        private readonly IMediator _mediator;
+        _mediator = mediator;
+    }
 
-        public ProjectsController(IMediator mediator)
-        {
-            _mediator = mediator;
-        }
+    [HttpPost]
+    public async Task<IActionResult> CreateProject([FromBody] CreateProjectDto dto)
+    {
+        var id = await _mediator.Send(new CreateProjectCommand(dto));
+        return CreatedAtAction(nameof(GetProjectById), new { id }, null);
+    }
 
-        [HttpPost]
-        public async Task<IActionResult> CreateProject([FromBody] CreateProjectDto dto)
-        {
-            var command = new CreateProjectCommand(dto);
-            var projectId = await _mediator.Send(command);
-            return CreatedAtAction(nameof(GetProjectById), new { id = projectId }, null);
-        }
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetProjectById(Guid id)
+    {
+        var result = await _mediator.Send(new GetProjectByIdQuery(id));
+        if (result == null) return NotFound();
+        return Ok(result);
+    }
 
-        
-        [HttpGet("{id}")]
-        public IActionResult GetProjectById(Guid id)
-        {        
-            return Ok();
-        }
+    [HttpGet]
+    public async Task<IActionResult> GetAllProjects()
+    {
+        var result = await _mediator.Send(new GetAllProjectsQuery());
+        return Ok(result);
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteProject(Guid id)
+    {
+        await _mediator.Send(new DeleteProjectCommand(id));
+        return NoContent();
     }
 }
-

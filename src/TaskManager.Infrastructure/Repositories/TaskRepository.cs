@@ -46,5 +46,18 @@ namespace TaskManager.Infrastructure.Repositories
             return await _context.Tasks.AnyAsync(t => t.ProjectId == projectId &&
                 (t.Status == Status.Pendente || t.Status == Status.EmAndamento));
         }
+        public async Task<List<TaskItem>> GetByProjectIdAsync(Guid projectId)
+        {
+            return await _context.Tasks.Where(t => t.ProjectId == projectId).ToListAsync();
+        }
+        public async Task DeleteAsync(Guid taskId)
+        {
+            var task = await _context.Tasks.FindAsync(taskId);
+            if (task != null)
+            {
+                _context.Tasks.Remove(task);
+                await _context.SaveChangesAsync();
+            }
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,6 +33,16 @@ namespace TaskManager.Infrastructure.Repositories
                 _context.Projects.Remove(project);
                 await _context.SaveChangesAsync();
             }
+        }
+
+        public async Task<List<Project>> GetAllAsync()
+        {
+            return await _context.Projects.ToListAsync();
+        }
+
+        public async Task<Project?> GetByIdAsync(Guid id)
+        {
+            return await _context.Projects.FindAsync(id);
         }
     }
 }

@@ -11,7 +11,7 @@ namespace TaskManager.Infrastructure.Data
     public class TaskManagerDbContext : DbContext
     {
         public TaskManagerDbContext(DbContextOptions<TaskManagerDbContext> options) : base(options)
-        {   
+        {
             Projects = Set<Project>();
             Tasks = Set<TaskItem>();
             TaskComments = Set<TaskComment>();

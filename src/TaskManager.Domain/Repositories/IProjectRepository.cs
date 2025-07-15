@@ -11,5 +11,7 @@ namespace TaskManager.Domain.Repositories
     {
         Task AddAsync(Project project);
         Task DeleteAsync(Guid projectId);
+        Task<List<Project>> GetAllAsync();
+        Task<Project?> GetByIdAsync(Guid id);
     }
 }

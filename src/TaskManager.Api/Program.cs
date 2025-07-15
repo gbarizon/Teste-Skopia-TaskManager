@@ -22,7 +22,7 @@ builder.Services.AddDbContext<TaskManagerDbContext>(options =>
 builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
 builder.Services.AddScoped<ITaskCommentRepository, TaskCommentRepository>();
 builder.Services.AddScoped<ITaskHistoryRepository, TaskHistoryRepository>();
-builder.Services.AddScoped<ITaskRepository, ITaskRepository>();
+builder.Services.AddScoped<ITaskRepository, TaskRepository>();
 
 //Registrar o repositório de tarefas no MediatR
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<CreateProjectHandler>());
