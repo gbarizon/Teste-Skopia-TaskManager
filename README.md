@@ -24,3 +24,23 @@ Perguntas para o PO para Futuras Melhorias
 6 - Há necessidade de exportar dados ou relatórios no sistema?
 
 7 - Precisamos registrar no histórico outros eventos além das alterações principais (por exemplo, mudança de status, prazos, etc)?
+
+Fase 3: Pontos de Melhoria e Evolução Arquitetural
+Tratamento de Erros: Implementar middleware para capturar e retornar erros padronizados.
+
+Logs e Monitoramento: Adicionar logs estruturados (ex: Serilog) e ferramentas de monitoramento.
+
+Variáveis Sensíveis: Gerenciar secrets e strings de conexão via variáveis de ambiente ou vault.
+
+Automação DevOps: Configurar pipelines CI/CD para build, testes e deploy automático.
+
+Padronização: Usar lint e análise estática de código para garantir qualidade.
+
+Arquitetura
+Projeto segue Clean Architecture, separado em camadas.
+
+Está pronto para deploy em cloud/container.
+
+Recomenda-se no futuro: adicionar autenticação JWT, e se necessário, mensageria para microserviços.
+
+
