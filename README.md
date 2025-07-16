@@ -1,6 +1,11 @@
 # Teste-Skopia-TaskManager
 O time de desenvolvimento de uma empresa precisa de sua ajuda para criar um sistema de gerenciamento de tarefas. O objetivo é desenvolver uma API que permita aos usuários organizar e monitorar suas tarefas diárias, bem como colaborar com colegas de equipe.
 
+*** Executando o Projeto no Docker ***
+
+1  - docker-compose up --build
+2  - docker start taskmanagerapi-api-1 (isso porque o projeto não subiu automaticamente, devido ao tempo de entrega, eu optei por colocar manualmente até achar uma solução)
+
 Fase 2: Refinamento
 
 Perguntas para o PO para Futuras Melhorias
