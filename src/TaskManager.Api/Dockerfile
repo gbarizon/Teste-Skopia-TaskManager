@@ -11,11 +11,12 @@ RUN dotnet restore
 
 COPY . .
 
-
-
 RUN dotnet publish src/TaskManager.Api/TaskManager.Api.csproj -c Release -o /app/publish
 
 FROM mcr.microsoft.com/dotnet/aspnet:9.0
 WORKDIR /app
 COPY --from=build /app/publish .
-ENTRYPOINT ["dotnet", "TaskManager.Api.dll"]
+COPY wait-for-it.sh /app/wait-for-it.sh
+RUN chmod +x /app/wait-for-it.sh
+ENTRYPOINT ["/app/wait-for-it.sh", "sqlserver:1433", "--", "dotnet", "TaskManager.Api.dll"]
+

@@ -26,3 +26,4 @@ services:
     depends_on:
       sqlserver:
         condition: service_healthy
+    entrypoint: ["/app/wait-for-it.sh", "sqlserver:1433", "--", "dotnet", "TaskManager.Api.dll"]

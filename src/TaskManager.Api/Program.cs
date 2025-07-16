@@ -22,7 +22,12 @@ public partial class Program
         builder.Services.AddSwaggerGen();
 
         builder.Services.AddDbContext<TaskManagerDbContext>(options =>
-            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            options.UseSqlServer(
+                builder.Configuration.GetConnectionString("DefaultConnection"),
+                sqlOptions => sqlOptions.EnableRetryOnFailure()
+            )
+        );
+
 
         // Repositories
         builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
@@ -82,7 +87,6 @@ public partial class Program
         }
 
         app.Run();
-
     }
 }
 
